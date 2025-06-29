@@ -44,7 +44,7 @@ fun celsiusToFahrenheit(celsius: Double): Double{
 // 4. สร้างฟังก์ชันแยกสำหรับการแปลงหน่วย Kilometers to Miles: kilometersToMiles
 // สูตร kilometers * 0.621371
 // 🚨
-fun kilometersToMiles(distance: Int): Double{
+fun kilometersToMiles(distance: Double): Double{
     return distance * 0.621371
 }
 
@@ -78,7 +78,7 @@ fun convertCelsiusToFahrenheit() {
 fun convertKilometersToMiles() {
     print("ป้อนค่ากิโลเมตร (Kilometers): ")
     val input = readln()
-    val kilometers = input.toIntOrNull()
+    val kilometers: Double = input.toDoubleOrNull()
         ?: return
 
 
@@ -97,3 +97,6 @@ fun convertKilometersToMiles() {
     // 6. แสดงผลลัพธ์
 //🚨    println("ผลลัพธ์: $kilometers km เท่ากับ ${"%.2f".format(milesResult)} miles")
 }
+
+
+

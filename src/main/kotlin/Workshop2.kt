@@ -3,9 +3,9 @@ package org.example
 // 1. กำหนด data class สำหรับเก็บข้อมูลสินค้า
 data class Product(val name: String, val price: Double, val category: String)
 
+
 fun main() {
     // 2. สร้างรายการสินค้าตัวอย่าง (List<Product>)
-
     val products = listOf<Product>(
         Product("Laptop", 35000.0, "Electronics"),
         Product("Smartphone", 25000.0, "Electronics"),
@@ -15,6 +15,7 @@ fun main() {
         Product("Jeans", 1200.0, "Apparel"),
         Product("Headphones", 1800.0, "Electronics") // ตรงตามเงื่อนไข)
     )
+
 
 
     println("รายการสินค้าทั้งหมด:")
@@ -28,6 +29,15 @@ fun main() {
     // กรองสินค้าที่ราคามากกว่า 500
     // ดึงเฉพาะราคาออกมาเป็น List<Double>
     // หาผลรวมของราคา
+
+    fun calculateTotalElectronicsOver500(products: List<Product>): Double {
+        return products
+            .filter { it.category == "Electronics" }
+            .filter { it.price > 500 }
+            .sumOf { it.price }
+    }
+
+
     val totalElecPriceOver500 = products
         .filter { it.category =="Electronics" }
         .filter { it.price > 500 }
@@ -90,4 +100,15 @@ fun main() {
     println("ราคา 1,000 - 9,999 บาท:")
     between10009999.forEach{ println( "- ${it.name}: ${it.price} " ) }
     println("--------------------------------------------------")
+}
+
+fun calculateTotalElectronicsOver500(products: List<Product>): Double {
+    return products
+        .filter { it.category == "Electronics" }
+        .filter { it.price > 500 }
+        .sumOf { it.price }
+}
+
+fun countElectronicsOver500(products: List<Product>): Double {
+    return products.count { it.category == "Electronics" && it.price > 500 }.toDouble()
 }
